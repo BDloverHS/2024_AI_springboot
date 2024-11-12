@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <form method="POST" action="join" th:action="@{/member/join}" th:object="${requestJoin}">
+            <dl>
+                <dt th:text="#{EMAIL}">이메일</dt>
+                <dd th:text="*{email}">user02@test.org</dd>
+            </dl>
+
+            <dl>
+                <dt>비밀번호</dt>
+                <dd th:text="*{password}">2345678</dd>
+            </dl>
+
+            <dl>
+                <dt>비밀번호 확인</dt>
+                <dd th:text="*{confirmPassword}">2345678</dd>
+            </dl>
+
+            <dl>
+                <dt>회원명</dt>
+                <dd th:text="*{name}">사용자02</dd>
+            </dl>
+            <button type="submit">가입하기</button>
+            <a th:href="@{/member/login(param1=*{email}, param=*{password})}">로그인</a>
+            <!-- {em} : 변수 설정 / em=*{email} 변수에 *{email} 값을 넣음 -->
+            <a th:href="@{/member/findId/{em}(em=*{email})}">아이디 찾기</a>
+        </form>
+    </body>
+</html>

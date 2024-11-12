@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <form method="POST" action="join">
+            <dl>
+                <dt>이메일</dt>
+                <dd th:text="${requestJoin.email}">user01@test.org</dd>
+            </dl>
+
+            <dl>
+                <dt>비밀번호</dt>
+                <dd th:text="${requestJoin.password}">12345678</dd>
+            </dl>
+
+            <dl>
+                <dt>비밀번호 확인</dt>
+                <dd th:text="${requestJoin.confirmPassword}">12345678</dd>
+            </dl>
+
+            <dl>
+                <dt>회원명</dt>
+                <dd th:text="${requestJoin.name}">사용자01</dd>
+            </dl>
+        </form>
+    </body>
+</html>
