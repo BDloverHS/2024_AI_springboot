@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 
 @Slf4j
 @Controller
@@ -31,10 +33,19 @@ public class MemberController {
     }
     */
 
+    /*
     @GetMapping("/join")
-    public String join(@ModelAttribute RequestJoin form) { // RequestJoin - requestJoin
+    public String join(@ModelAttribute RequestJoin form, Model model) { // RequestJoin - requestJoin
 
+        model.addAttribute("message", "반갑습니다");
         return "member/joinForm";
+    }
+    */
+
+    // 컨트롤러 내에서 전역으로 설정
+    @ModelAttribute("apples")
+    public List<String> apples() {
+        return List.of("사과1", "사과2", "사과3");
     }
 
     /**
