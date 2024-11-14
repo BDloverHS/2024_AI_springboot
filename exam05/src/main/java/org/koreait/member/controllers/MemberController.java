@@ -85,14 +85,16 @@ public class MemberController {
             return "member/login";
         }
 
-        if (errors.hasErrors()) {
-            return "member/login";
-        }
-
         // 검증에 이상이 없는 상태 -> 로그인 처리
         loginService.process(form);
 
         return "redirect:/";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // 세션 비우기
+        return "redirect:/member/login";
     }
 
     /**
