@@ -10,10 +10,7 @@ import org.koreait.member.validators.JoinValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -73,7 +70,13 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String login(@ModelAttribute RequestLogin form) {
+    public String login(@ModelAttribute RequestLogin form,
+                        @CookieValue(name="savedEmail", required = false) String savedEmail) {
+
+        if (savedEmail != null) {
+            form.setEmail(savedEmail);
+            form.setSaveEmail(true);
+        }
 
         return "member/login";
     }
