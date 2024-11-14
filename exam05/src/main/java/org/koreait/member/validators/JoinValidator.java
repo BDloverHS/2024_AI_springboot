@@ -76,7 +76,7 @@ public class JoinValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Required");
 
         if (!agree) { // 약관에 동의하지 않은 경우
-            errors.rejectValue("agree", "Required");
+            errors.rejectValue("agree", "Agree");
         }
 
         // 비번, 비번 확인 일치 여부 확인
@@ -84,6 +84,11 @@ public class JoinValidator implements Validator {
             errors.rejectValue("confirmPassword", "Required", "비밀번호가 일치하지 않습니다.");
         }
 
+        boolean result = false;
+
+        if(!result) {
+            errors.reject("Fail.join"); // 특정 필드가 아닌 일반적인 검증 실패
+        }
 
         /* 필수항목 검증 E */
     }
