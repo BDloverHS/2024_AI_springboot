@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7b8b82a-c481-4f77-be96-db5b26b5200f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/controllers/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/controllers/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/controllers/RequestJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/controllers/RequestJoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/controllers/RequestLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/controllers/RequestLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/validators/JoinValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/exam05/src/main/java/org/koreait/member/validators/JoinValidator.java" afterDir="false" />
-    </list>
+    <list default="true" id="e7b8b82a-c481-4f77-be96-db5b26b5200f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
