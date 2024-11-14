@@ -1,7 +1,7 @@
 package org.koreait.member.validators;
 
 public interface MobileValidator {
-    boolean checkMobile(String num) {
+    default boolean checkMobile(String num) {
         /**
          * 01010001000
          * 010-1000-1000
