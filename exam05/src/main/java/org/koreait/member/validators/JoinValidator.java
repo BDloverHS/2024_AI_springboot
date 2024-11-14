@@ -32,5 +32,42 @@ public class JoinValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         RequestJoin form = (RequestJoin)target;
+
+        /**
+         * 필수 항목 검증 S
+         * email, password, confirmPassword, name, agree
+         */
+
+        String email = form.getEmail();
+        String password = form.getPassword();
+        String confirmPassword = form.getConfirmPassword();
+        String name = form.getName();
+        boolean agree = form.isAgree();
+
+        if (email == null || email.isBlank()) {
+            errors.rejectValue("email", "Retired", "이메일을 입력하세요.");
+        }
+
+        if (password == null || password.isBlank()) {
+            errors.rejectValue("password", "Required", "비밀번호를 입력하세요.");
+        }
+
+        if (confirmPassword == null || confirmPassword.isBlank()) {
+            errors.rejectValue("confirmPassword", "Required", "비밀번호 확인을 입력하세요.");
+        }
+
+        if (name == null || name.isBlank()) {
+            errors.rejectValue("name", "Required", "회원명을 입력하세요.");
+        }
+
+        if (!agree) { // 약관에 동의하지 않은 경우
+            errors.rejectValue("agree", "Required", "약관에 동의해주세요.");
+        }
+
+        if (password != null && confirmPassword != null && !password.equals(confirmPassword)) {
+            errors.rejectValue("confirmPassword", "Required", "비밀번호가 일치하지 않습니다.");
+        }
+
+        /* 필수항목 검증 E */
     }
 }

@@ -1,7 +1,10 @@
 package org.koreait.member.controllers;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.koreait.member.validators.JoinValidator;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 @Controller
 @RequestMapping("/member")
+@RequiredArgsConstructor
 public class MemberController {
+
+    private final JoinValidator joinValidator;
+
     @GetMapping("/join")
     public String join() {
 
@@ -22,12 +29,14 @@ public class MemberController {
      * @return
      */
     @PostMapping("/join")
-    public String joinPs(RequestJoin form) {
-        // 정보
-        log.info(form.toString());
+    public String joinPs(RequestJoin form, Errors errors) {
+        joinValidator.validate(form, errors); // 커맨드 객체 검증
 
+        if (errors.hasErrors()) { // 검증 실패! - reject, rejectValue가 한 번이라도 호출됨
+            return "member/joinForm"; // 검증 실패하면 사용자에게 양식을 다시 보여주고, 검증 실패 정보를 제공
+        }
 
-
-        return "member/joinForm"; // 임시
+        // 검증 성공 시 - 가입처리 서비스 호출
+        return "redirect:/member/login"; // 가입 성공 시 로그인 페이지로 이동
     }
 }
