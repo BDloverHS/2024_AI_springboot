@@ -3,6 +3,7 @@ package org.koreait.member.validators;
 import org.koreait.member.controllers.RequestJoin;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
@@ -44,6 +45,7 @@ public class JoinValidator implements Validator {
         String name = form.getName();
         boolean agree = form.isAgree();
 
+        /*
         if (email == null || email.isBlank()) {
             errors.rejectValue("email", "Retired", "이메일을 입력하세요.");
         }
@@ -59,14 +61,29 @@ public class JoinValidator implements Validator {
         if (name == null || name.isBlank()) {
             errors.rejectValue("name", "Required", "회원명을 입력하세요.");
         }
+        */
+
+        /*
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required", "이메일을 입력해주세요.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required", "비밀번호를 입력해주세요.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "Required", "비밀번호 확인을 입력해주세요.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Required", "회원명을 입력해주세요.");
+        */
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "Required");
 
         if (!agree) { // 약관에 동의하지 않은 경우
-            errors.rejectValue("agree", "Required", "약관에 동의해주세요.");
+            errors.rejectValue("agree", "Required");
         }
 
+        // 비번, 비번 확인 일치 여부 확인
         if (password != null && confirmPassword != null && !password.equals(confirmPassword)) {
             errors.rejectValue("confirmPassword", "Required", "비밀번호가 일치하지 않습니다.");
         }
+
 
         /* 필수항목 검증 E */
     }

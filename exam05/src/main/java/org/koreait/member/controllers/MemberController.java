@@ -33,19 +33,17 @@ public class MemberController {
     }
     */
 
-    /*
-    @GetMapping("/join")
-    public String join(@ModelAttribute RequestJoin form, Model model) { // RequestJoin - requestJoin
-
-        model.addAttribute("message", "반갑습니다");
-        return "member/joinForm";
-    }
-    */
-
     // 컨트롤러 내에서 전역으로 설정
     @ModelAttribute("apples")
     public List<String> apples() {
         return List.of("사과1", "사과2", "사과3");
+    }
+
+    @GetMapping("/join")
+    public String join(@ModelAttribute RequestJoin form, Model model) { // RequestJoin - requestJoin
+
+        // model.addAttribute("message", "반갑습니다");
+        return "member/joinForm";
     }
 
     /**
@@ -62,5 +60,12 @@ public class MemberController {
 
         // 검증 성공 시 - 가입처리 서비스 호출
         return "redirect:/member/login"; // 가입 성공 시 로그인 페이지로 이동
+    }
+
+    @GetMapping("/login")
+    public String login() {
+
+
+        return "member/login";
     }
 }
