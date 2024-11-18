@@ -15,8 +15,12 @@ public class MemberOnlyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        System.out.println("preHandle()!");
+        // 미 로그인 상태이면 로그인 페이지 이동, 로그인 완료 후 마이페이지로 자동 이동
+        String url = String.format("%s?redirectUrl=%s", request.getContextPath(), "/member/login", "mypage");
 
-        return true;
+        response.sendRedirect(url);
+
+        // return true;
+        return false; // 컨트롤러 빈 요청 메서드 실행 X - 화면이 보이지 않음
     }
 }
