@@ -1,13 +1,12 @@
 package org.koreait.member.controllers;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.koreait.member.exceptions.MemberNotFoundException;
 import org.koreait.member.services.LoginService;
 import org.koreait.member.validators.JoinValidator;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,6 +22,7 @@ public class MemberController {
 
     private final JoinValidator joinValidator;
     private final LoginService loginService;
+    private final MessageSource messageSource;
 
     /**
      * 회원가입 양식
@@ -67,7 +67,7 @@ public class MemberController {
 
         // 검증 성공시 - 가입 처리 서비스 호출
 
-       return "redirect:/member/login"; // 가입 성공시 로그인 페이지로 이동
+        return "redirect:/member/login"; // 가입 성공시 로그인 페이지로 이동
     }
 
     @GetMapping("/login")
@@ -89,6 +89,7 @@ public class MemberController {
         }
 
         // 검증에 이상이 없는 상태 -> 로그인 처리
+
         loginService.process(form);
 
         return "redirect:/";
@@ -113,11 +114,30 @@ public class MemberController {
         binder.setValidator(joinValidator);
     } */
 
-    @ExceptionHandler(MemberNotFoundException.class)
-    public String errorHandler(MemberNotFoundException e, Model model, HttpServletRequest request) {
+    //@ExceptionHandler({MemberNotFoundException.class, IllegalArgumentException.class})
+    /*
+    @ExceptionHandler(Exception.class)
+    public ModelAndView errorHandler(Exception e, Model model, HttpServletRequest request) {
         e.printStackTrace();
-        return "error/errorPage";
 
-        model.addAttribute()
+        HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; // 기본 응답 코드 500
+        String message = e.getMessage(); // 기본 메세지
+
+        if (e instanceof CommonException commonException) { // 직접 정의한 예외인 경우 정의한 예외로 대체
+            status = commonException.getStatus();
+            if (commonException.isErrorCode()) {
+                message = messageSource.getMessage(message, null, request.getLocale());
+            }
+        }
+
+        //response.setStatus(status.value());
+
+        ModelAndView mv = new ModelAndView();
+        mv.setStatus(status);
+        mv.addObject("message", message);
+        mv.setViewName("error/errorPage");
+
+        return mv;
     }
+    */
 }
