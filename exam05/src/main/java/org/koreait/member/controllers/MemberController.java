@@ -117,5 +117,7 @@ public class MemberController {
     public String errorHandler(MemberNotFoundException e, Model model, HttpServletRequest request) {
         e.printStackTrace();
         return "error/errorPage";
+
+        model.addAttribute()
     }
 }
