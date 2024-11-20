@@ -4,9 +4,11 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.koreait.global.exceptions.script.AlertRedirectException;
 import org.koreait.member.services.LoginService;
 import org.koreait.member.validators.JoinValidator;
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -72,6 +74,10 @@ public class MemberController {
 
     @GetMapping("/login")
     public String login(@ModelAttribute RequestLogin form, @CookieValue(name="savedEmail", required = false) String savedEmail) {
+
+        if (true) {
+            throw new AlertRedirectException("테스트 예외", "/member/join", HttpStatus.BAD_REQUEST);
+        }
 
         if (savedEmail != null) { // 쿠키값이 있다면
             form.setEmail(savedEmail);
