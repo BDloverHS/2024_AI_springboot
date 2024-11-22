@@ -13,9 +13,8 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/file")
 public class FileController {
-
-    @Value("${file.upload./path}")
-    private String filePath; // 설정 값 주의
+    @Value("${file.upload.path}") // 설정값을 주입
+    private String filePath;
 
     @GetMapping("/upload")
     public String upload() {
@@ -25,30 +24,30 @@ public class FileController {
     @ResponseBody
     @PostMapping("/upload")
     public void uploadPs(@RequestPart("file") MultipartFile _file, @RequestPart("file2") MultipartFile file2) {
-        // log.info(_file.toString());
-        log.info("getName() : {}", _file.getName()); // <input .. name='이름;
-        log.info("getOriginalFilename() : {}", _file.getOriginalFilename()); // 업로드한 파일 이름
-        log.info("getSize() : {}", _file.getSize()); // 파일 용량(바이트)
+        //log.info(_file.toString());
+        log.info("getName(): {}", _file.getName());  // <input .. name='이름'
+        log.info("getOriginalFilename(): {}", _file.getOriginalFilename()); // 업로드한 파일 이름
+        log.info("getSize(): {}", _file.getSize()); // 파일 용량(바이트)
 
-        File uploadPath = new File("D:/uploads/" + _file.getOriginalFilename());
+        // 업로드할 경로!
+        File uploadPath = new File(filePath + _file.getOriginalFilename());
         try {
             _file.transferTo(uploadPath); // 임시 저장공간에 있는 파일 -> 지정한 서버 경로 이동
-        } catch(IOException e) {
-
-        }
+        } catch (IOException e) {}
 
         log.info("file2 : {}", file2.getOriginalFilename());
-
     }
 
     @ResponseBody
     @PostMapping("/upload2")
     public void uploadPs2(@RequestPart("file") MultipartFile[] files) {
+        System.out.println("filePath:" + filePath);
         for (MultipartFile file : files) {
             try {
+
                 file.transferTo(new File(filePath + file.getOriginalFilename()));
             } catch (IOException e) {
-
+                e.printStackTrace();
             }
         }
     }
