@@ -17,8 +17,10 @@ public class CommonInterceptor implements HandlerInterceptor {
      * 컨트롤러 빈 요청 메서드 실행 완료, ModelAndView 반환 직후 호출
      * - 응답 템플릿 쪽에서 공유할 데이터 처리할 때 주로 사용(ModelAndView 를 사용해서...)
      */
+    /*
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         modelAndView.addObject("commonMessage", "공통 메세지!");
     }
+    */
 }
