@@ -33,7 +33,6 @@ dependencies {
 
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 
-
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	implementation 'jakarta.validation:jakarta.validation-api'
 	implementation 'org.hibernate.validator:hibernate-validator'
