@@ -1,10 +1,7 @@
 package org.koreait.global.interceptors;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 사이트 모든 페이지의 공통 처리 부분
@@ -21,6 +18,5 @@ public class CommonInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         modelAndView.addObject("commonMessage", "공통 메세지!");
-    }
-    */
+    } */
 }

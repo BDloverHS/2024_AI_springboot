@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.koreait.global.exceptions.CommonException;
 import org.koreait.global.exceptions.scripts.AlertBackException;
+import org.koreait.global.exceptions.scripts.AlertException;
 import org.koreait.global.exceptions.scripts.AlertRedirectException;
 import org.koreait.member.libs.MemberUtil;
 import org.springframework.context.MessageSource;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
-import org.koreait.global.exceptions.scripts.AlertException;
 
 /**
  * org.koreait 패키지를 포함한 하위 패키지의 모든 @Controller 애노테이션 적용된 컨트롤러
@@ -71,6 +71,7 @@ public class CommonControllerAdvice {
         }
 
         //response.setStatus(status.value());
+
 
         mv.setStatus(status);
         mv.addObject("message", message);

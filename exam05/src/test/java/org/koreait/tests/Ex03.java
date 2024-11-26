@@ -11,9 +11,9 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles({"default", "test"})
 @EnableConfigurationProperties(FileProperties.class)
 public class Ex03 {
+
     @Autowired
     private FileProperties fileProperties;
-
 
     @Test
     void test1() {

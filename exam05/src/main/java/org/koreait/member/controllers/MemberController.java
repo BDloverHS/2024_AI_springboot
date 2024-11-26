@@ -4,11 +4,9 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.koreait.global.exceptions.scripts.AlertRedirectException;
 import org.koreait.member.services.LoginService;
 import org.koreait.member.validators.JoinValidator;
 import org.springframework.context.MessageSource;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -69,7 +67,7 @@ public class MemberController {
 
         // 검증 성공시 - 가입 처리 서비스 호출
 
-        return "redirect:/member/login"; // 가입 성공시 로그인 페이지로 이동
+       return "redirect:/member/login"; // 가입 성공시 로그인 페이지로 이동
     }
 
     @GetMapping("/login")
