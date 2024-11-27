@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.koreait.global.entities.BaseEntity;
+import org.koreait.member.constants.Authority;
 
 
 import java.sql.Timestamp;
@@ -26,8 +27,14 @@ public class Member extends BaseEntity {
     @Column(length = 40, nullable = false)
     private String name;
 
-    @Lob // 오라클 기준 CLOB
+    // @Lob // 오라클 기준 CLOB
+    // DB에는 생기지 않음
+    @Transient
     private String introduction;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length=10, nullable = false)
+    private Authority authority;
 
     /*
     @Temporal(TemporalType.TIME)
