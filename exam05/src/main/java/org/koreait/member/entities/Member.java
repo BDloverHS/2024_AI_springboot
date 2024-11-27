@@ -4,14 +4,16 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.koreait.global.entities.BaseEntity;
 
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
 // @Table(name="KT_MEMBER")
-public class Member {
+public class Member extends BaseEntity {
     @Id //  기본키
     // @GeneratedValue(strategy = GenerationType.AUTO)
     @GeneratedValue
@@ -24,11 +26,11 @@ public class Member {
     @Column(length = 40, nullable = false)
     private String name;
 
-    @Column(updatable = false)
-    @CreationTimestamp // insert 시 시간 자동 저장
-    private LocalDateTime regDt;
+    @Lob // 오라클 기준 CLOB
+    private String introduction;
 
-    @Column(insertable = false)
-    @UpdateTimestamp // update 시 시간 자동 저장
-    private LocalDateTime modDt;
+    /*
+    @Temporal(TemporalType.TIME)
+    private Data birthDt;
+     */
 }

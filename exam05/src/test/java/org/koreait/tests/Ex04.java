@@ -47,5 +47,9 @@ public class Ex04 {
         Member member1 = em.find(Member.class, 1L);
         Member member2 = em.find(Member.class, 1L);
 
+        System.out.println(member1);
+        System.out.printf("member1.regDt:%s, member1.modDt:%s%n", member1.getRegDt(), member1.getModDt());
+        System.out.println(member2);
+        System.out.printf("member2.regDt:%s, member1.modDt:%s%n", member2.getRegDt(), member2.getRegDt());
     }
 }
