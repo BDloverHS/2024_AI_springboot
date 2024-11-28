@@ -1,5 +1,7 @@
 package org.koreait.jpaex;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.koreait.board.entities2.BoardData;
@@ -8,17 +10,24 @@ import org.koreait.board.repositories.BoardDataRepository;
 import org.koreait.board.repositories.HashTagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @SpringBootTest
+@ActiveProfiles({"default","test"})
 public class Ex08 {
     @Autowired
     private BoardDataRepository boardDataRepository;
 
     @Autowired
     private HashTagRepository hashTagRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @BeforeEach
     void init() {
@@ -41,10 +50,14 @@ public class Ex08 {
         }
 
         boardDataRepository.saveAllAndFlush(items);
+
+        em.clear();
     }
 
     @Test
     void test1() {
-
+            BoardData item = boardDataRepository.findById(1L).orElse(null);
+            List<HashTag> tags = item.getTags();
+            tags.forEach(System.out::println);
     }
 }
