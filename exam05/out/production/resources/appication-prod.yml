@@ -1,8 +1,0 @@
-# prod 모델이 때 설정됨
-spring:
-  thymeleaf:
-    cache: true
-    prefix: classpath:/resources/templates/
-
-file:
-  upload.path: D:/uploads2/
