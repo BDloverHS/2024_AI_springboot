@@ -1,4 +1,4 @@
-package org.koreait.tests;
+package org.koreait.jpaex;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.koreait.board.entities2.Board;
 import org.koreait.board.entities2.BoardData;
-import org.koreait.board.respositories.BoardDataRepository;
-import org.koreait.board.respositories.BoardRepository;
+import org.koreait.board.repositories.BoardDataRepository;
+import org.koreait.board.repositories.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;

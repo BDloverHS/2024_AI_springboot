@@ -1,4 +1,4 @@
-package org.koreait.tests;
+package org.koreait.jpaex;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.EntityManager;

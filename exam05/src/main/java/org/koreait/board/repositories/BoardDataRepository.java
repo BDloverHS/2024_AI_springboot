@@ -1,4 +1,4 @@
-package org.koreait.board.respositories;
+package org.koreait.board.repositories;
 
 import org.koreait.board.entities2.BoardData;
 import org.springframework.data.jpa.repository.JpaRepository;

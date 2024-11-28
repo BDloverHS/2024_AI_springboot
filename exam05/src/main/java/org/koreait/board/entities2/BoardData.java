@@ -24,5 +24,5 @@ public class BoardData extends BaseEntity {
     private Board board;
 
     @ManyToMany
-    private List<HashTag> tag;
+    private List<HashTag> tags;
 }
