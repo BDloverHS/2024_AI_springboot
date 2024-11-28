@@ -51,7 +51,7 @@ public class Ex04 {
         //List<Member> members = repository.findByNameContainingOrderByRegDtDesc("");
         //members.forEach(System.out::println);
 
-        // 0페이지, 한페이지당 3개씩
+        // 2페이지, 한페이지당 3개씩
         Pageable pageable = PageRequest.of(2, 3);
         Page<Member> data = repository.findByNameContainingOrderByRegDtDesc("", pageable);
 
