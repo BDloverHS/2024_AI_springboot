@@ -20,11 +20,11 @@ public class BoardData extends BaseEntity {
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne // 다대일 관계 선언
+    @ManyToOne(fetch = FetchType.LAZY) // 필요할 때만 불러오는 지연 로딩
     @JoinColumn(name = "bid") // 외래키 이름을 직접 지정
     private Board board;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) // 필요할 때만 불러오는 지연 로딩
     private Member member;
 
     @ManyToMany
