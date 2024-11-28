@@ -17,6 +17,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static org.springframework.data.domain.Sort.Order.asc;
 import static org.springframework.data.domain.Sort.Order.desc;
@@ -30,7 +31,7 @@ public class Ex04 {
     // 10명의 인원을 추가
     @BeforeEach
     void init() {
-        Faker faker = new Faker();
+        Faker faker = new Faker(Locale.KOREA);
         List<Member> members = new ArrayList<>();
 
         for (int i = 1; i < 10; i++) {

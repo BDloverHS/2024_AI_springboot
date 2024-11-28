@@ -40,4 +40,7 @@ public class Member extends BaseEntity {
     @Temporal(TemporalType.TIME)
     private Data birthDt;
      */
+
+    @OneToOne // adress_seq
+    private Address address;
 }
