@@ -11,8 +11,7 @@ import java.util.List;
 @Entity
 public class HashTag {
     @Id
-    private String tag;
-
+    private String tags;
 
     @ManyToMany(mappedBy = "tags")
     private List<BoardData> items;
