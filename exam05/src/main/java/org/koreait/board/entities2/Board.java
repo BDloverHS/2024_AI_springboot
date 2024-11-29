@@ -1,9 +1,6 @@
 package org.koreait.board.entities2;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 import org.koreait.global.entities.BaseEntity;
@@ -20,6 +17,7 @@ public class Board extends BaseEntity {
     private String bname; // 게시판명
 
     @ToString.Exclude // ToString 메서드에서 배제
-    @OneToMany(mappedBy = "board") // 관계 주인 BoardData의 외래키 참조인 board
+    // orphanRemoval = true : 부모를 잃은 자식은 같이 지워짐
+    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE, orphanRemoval = true) // 관계 주인 BoardData의 외래키 참조인 board
     private List<BoardData> items;
 }
