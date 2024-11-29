@@ -103,12 +103,11 @@ public class Ex08 {
         // QueryDSL - fetchJoin()
         QBoardData boardData = QBoardData.boardData;
         List<BoardData> items = factory.selectFrom(boardData)
-                                       .leftJoin(boardData.board)
-                                       .fetchJoin() // boardData.board를 처음부터 JOIN
-                                       .leftJoin(boardData.member)
-                                       .fetchJoin() // boardData.member를 처음부터 JOIN
-                                       .fetch();
-
+                .leftJoin(boardData.board)
+                .fetchJoin() // boardData.board를 처음부터 JOIN
+                .leftJoin(boardData.member)
+                .fetchJoin() // boardData.member를 처음부터 JOIN
+                .fetch();
     }
 
     @Test
