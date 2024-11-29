@@ -126,7 +126,5 @@ public class Ex08 {
         //items.remove(1);
         //boardRepository.flush();
         //boardDataRepository.flush();
-
-
     }
 }
