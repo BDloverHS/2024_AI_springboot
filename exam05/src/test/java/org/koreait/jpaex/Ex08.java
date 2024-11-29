@@ -119,10 +119,12 @@ public class Ex08 {
     void test6() {
         Board board = boardRepository.findById("freetalk").orElse(null);
 
-        List<BoardData> items = board.getItems();
-        items.remove(1);
+        //List<BoardData> items = board.getItems();
+        //items.remove(1);
+        //boardRepository.flush();
+        //boardDataRepository.flush();
 
-        // boardRepository.delete(board);
-        // boardRepository.flush();
+        boardRepository.delete(board);
+        boardRepository.flush();
     }
 }
