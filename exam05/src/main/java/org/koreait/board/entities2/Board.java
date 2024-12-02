@@ -18,6 +18,7 @@ public class Board extends BaseEntity {
 
     @ToString.Exclude // ToString 메서드에서 배제
     // orphanRemoval = true : 부모를 잃은 자식은 같이 지워짐
-    @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE, orphanRemoval = true) // 관계 주인 BoardData의 외래키 참조인 board
+    // 관계 주인 BoardData의 외래키 참조인 board
+    @OneToMany(mappedBy = "board", cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<BoardData> items;
 }
