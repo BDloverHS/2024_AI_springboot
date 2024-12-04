@@ -1,5 +1,6 @@
 package org.koreait.global.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
@@ -22,10 +23,12 @@ public abstract class BaseEntity {
     @Column(updatable = false)
     // @CreationTimestamp // insert 시 시간 자동 저장
     @CreatedDate
+    @JsonFormat(pattern = "yyyy.MM.dd HH:mm")
     private LocalDateTime regDt;
 
     @Column(insertable = false)
     // @UpdateTimestamp // update 시 시간 자동 저장
     @LastModifiedDate
+    @JsonFormat(pattern = "yyyy.MM.dd HH:mm")
     private LocalDateTime modDt;
 }
